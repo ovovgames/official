@@ -106,3 +106,18 @@ price:
 ### 프레스킷 로고와 출시 시각
 
 프레스킷 하단의 Official studio logos에서 가로형·정사각형 공식 로고를 개별 다운로드할 수 있습니다. 중복되는 About the Studio는 제거하고 프레스 연락처는 유지했습니다. 현재 게임의 release_display는 datetime으로 설정되어 KST·PT(PDT/PST)·UTC를 표시합니다. 게임 목록에는 날짜만 간결하게 표시합니다.
+
+### 프레스킷에만 트레일러 추가
+
+게임 목록·상세의 영상 설정은 그대로 두고 프레스킷에만 표시하려면 `content/en/press/{slug}.md`의 YAML에 설정합니다. 한국어에도 공유됩니다.
+
+```yaml
+trailer: https://youtu.be/RbFgYw_w2ko
+trailer_download: assets/just-pancake-simulator/trailer.mp4
+```
+
+YouTube는 재생 버튼을 누를 때 임베드되며 MP4 원본은 다운로드 버튼을 누를 때만 요청합니다. 원본 영상은 전체 press.zip에도 포함됩니다. 로컬 영상 파일이 없으면 개별 다운로드 버튼은 숨겨집니다.
+
+### 트레일러 썸네일과 상세 페이지
+
+`content/en/press/just-pancake-simulator.md`의 `trailer_thumbnail`은 `assets/just-pancake-simulator/trailer-thumbnail.png`입니다. 현재 흰색 placeholder이며 실제 16:9 PNG로 교체한 뒤 빌드/새로고침하면 됩니다. 트레일러는 게임 목록에는 표시하지 않고, 게임 상세의 스크린샷 바로 위와 프레스킷에서 공유합니다. MP4 다운로드는 바이너리 Blob으로 저장해 미디어 뷰어 이동을 방지합니다.

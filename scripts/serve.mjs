@@ -42,7 +42,8 @@ http.createServer(async (req, res) => {
       const reload = '<script>new EventSource("/official/__preview_events").onmessage=function(event){if(event.data==="reload")location.reload();};</script>';
       data = Buffer.from(data.toString('utf8').replace('</body>', reload + '</body>'));
     }
-    res.writeHead(200, { 'Content-Type': types[path.extname(target)] || 'application/octet-stream', 'Cache-Control': 'no-store' });
+    const attachment = path.extname(target) === '.mp4' && new URL(req.url, 'http://localhost').searchParams.get('download') === '1';
+    res.writeHead(200, { 'Content-Type': attachment ? 'application/octet-stream' : types[path.extname(target)] || 'application/octet-stream', 'Cache-Control': 'no-store', ...(attachment ? { 'Content-Disposition': `attachment; filename="${path.basename(target)}"` } : {}) });
     res.end(req.method === 'HEAD' ? undefined : data);
   } catch { res.writeHead(404); res.end('Not found'); }
 }).listen(port, '127.0.0.1', () => console.log(`Preview: http://127.0.0.1:${port}/official/`));

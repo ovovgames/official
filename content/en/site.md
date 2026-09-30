@@ -45,6 +45,7 @@ ui:
   press_kit: Press kit
   download_kit: Download press kit
   watch_trailer: Watch trailer
+  download_trailer: Download original trailer
   trailer: Trailer
   play_video: Play trailer
   pause_video: Pause background video

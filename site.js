@@ -16,6 +16,31 @@
   });
   document.addEventListener('click', event => { if (!event.target.closest('header')) closeMenu(); });
   const status = document.querySelector('#site-status');
+  document.querySelectorAll('[data-file-download]').forEach(link => link.addEventListener('click', async event => {
+    event.preventDefault();
+    if (link.getAttribute('aria-busy') === 'true') return;
+    const label = link.textContent, korean = document.documentElement.lang === 'ko';
+    link.setAttribute('aria-busy', 'true');
+    link.textContent = korean ? '다운로드 준비 중…' : 'Preparing download…';
+    try {
+      const response = await fetch(link.href);
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      const blob = new Blob([await response.arrayBuffer()], { type: 'application/octet-stream' });
+      const objectUrl = URL.createObjectURL(blob);
+      const save = document.createElement('a');
+      save.href = objectUrl;
+      save.download = link.download;
+      document.body.append(save);
+      save.click();
+      save.remove();
+      setTimeout(() => URL.revokeObjectURL(objectUrl), 60000);
+    } catch {
+      if (status) status.textContent = korean ? '다운로드에 실패했습니다. 다시 시도해 주세요.' : 'Download failed. Please try again.';
+    } finally {
+      link.removeAttribute('aria-busy');
+      link.textContent = label;
+    }
+  }));
   document.querySelectorAll('[data-copy]').forEach(button => button.addEventListener('click', async () => {
     const source = document.getElementById(button.dataset.copy);
     if (!source) return;

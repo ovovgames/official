@@ -17,6 +17,7 @@ ui:
   press_kit: 프레스킷
   download_kit: 프레스킷 다운로드
   watch_trailer: 트레일러 보기
+  download_trailer: 트레일러 원본 다운로드
   trailer: 트레일러
   play_video: 트레일러 재생
   pause_video: 배경 영상 일시정지
