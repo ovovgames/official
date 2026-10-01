@@ -11,7 +11,7 @@ genres: [Simulation, Casual, Cooking, Physics]
 playtime: "~30 min"
 price:
   usd: "$1.99"
-  krw: "₩2,300"
+  krw: "₩2,200"
 languages: [English, Korean, French, Italian, German, Spanish (Spain), Russian, Japanese, Simplified Chinese, Traditional Chinese, Turkish, Portuguese (Brazil), Polish]
 ai_usage: Generative AI is only used for translation.
 trailer: ""

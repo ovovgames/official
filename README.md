@@ -81,7 +81,7 @@ release_datetime: "2026-10-20T02:00:00+09:00"
 release_display: date
 price:
   usd: "$1.99"
-  krw: "₩2,300"
+  krw: "₩2,200"
 ```
 
 `release_display`는 `date` / `month` / `year` / `datetime` 중 선택합니다. 날짜는 KST 기준이며 `datetime`만 KST·UTC·PT의 지역 날짜/시각을 모두 출력합니다. PT는 일광절약시간을 반영합니다. 가격은 직접 입력하며 한국어는 KRW, 영어는 USD를 우선합니다. 현재 출시일과 가격은 계획값입니다.

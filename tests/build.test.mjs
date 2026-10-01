@@ -42,7 +42,7 @@ test('new Markdown-only games, missing translations, optional fields, assets, ZI
     assert.match(await read('games/ko.html'), /test-game\/ko.html/);
     const press = await read('press/just-pancake-simulator/ko.html');
     assert.match(press, /생성형 AI 사용처/);
-    assert.match(press, /₩2,300/);
+    assert.match(press, /₩2,200/);
     assert.match(press, /screenshot_05.png/);
     assert.match(press, /data-copy="one-line"/);
     assert.match(press, /https:\/\/bsky.app\/profile\/ovovgames.bsky.social/);
